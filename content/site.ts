@@ -32,11 +32,11 @@ export const profile = {
 export const SPLINE_SCENE = '';
 
 export const links = {
-  email: 'shreeshatech08@gmail.com',
+  email: 'shreeshahrao1999@gmail.com',
   linkedin: 'https://www.linkedin.com/in/shreesha08/',
   github: 'https://github.com/shreesha08',
   // Drop the file at public/resume.pdf, then set this to '/resume.pdf'.
-  resume: '',
+  resume: '/Shreesha_Rao_Resume.pdf',
 };
 
 export const nav = [
@@ -228,10 +228,10 @@ export const services = [
 
 // Fill in from your actual records; the section stays hidden while degree is empty.
 export const education = {
-  degree: '',
-  institution: '',
-  years: '',
-  location: '',
+  degree: 'Bachelor of Engineering (BE)',
+  institution: 'Canara Engineering College',
+  years: 'Aug 2017 – Jul 2021',
+  location: 'Mangaluru, India',
   detail: '',
 };
 

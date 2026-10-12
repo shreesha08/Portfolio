@@ -55,6 +55,26 @@ export function Contact() {
                 </div>
               )}
             </dl>
+            {links.resume && (
+              <a
+                href={links.resume}
+                download
+                className="mt-8 inline-flex items-center gap-3 rounded-lg border border-ink px-6 py-3 text-ink transition-colors hover:bg-ink hover:text-page"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  className="h-4 w-4"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.6"
+                  aria-hidden="true"
+                >
+                  <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z" />
+                  <path d="M14 3v5h5M12 12v6M9.5 15.5 12 18l2.5-2.5" />
+                </svg>
+                Download Resume
+              </a>
+            )}
           </div>
         </div>
       </div>
