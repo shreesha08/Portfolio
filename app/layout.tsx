@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Montserrat, Poppins } from 'next/font/google';
+import { Hurricane, Montserrat, Poppins } from 'next/font/google';
 import { profile } from '@/content/site';
 import './globals.css';
 
@@ -17,6 +17,14 @@ const montserrat = Montserrat({
   display: 'swap',
 });
 
+// Handwritten signature on the landing splash.
+const hurricane = Hurricane({
+  subsets: ['latin'],
+  weight: '400',
+  variable: '--font-script',
+  display: 'swap',
+});
+
 const title = `${profile.firstName} ${profile.lastName} | ${profile.title}`;
 
 export const metadata: Metadata = {
@@ -31,7 +39,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     // suppressHydrationWarning: the inline script adds the `js` class before hydration.
     <html
       lang="en"
-      className={`${poppins.variable} ${montserrat.variable}`}
+      className={`${poppins.variable} ${montserrat.variable} ${hurricane.variable}`}
       suppressHydrationWarning
     >
       <head>

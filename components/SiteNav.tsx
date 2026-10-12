@@ -9,24 +9,31 @@ export function SiteNav() {
   const [active, setActive] = useState<string>('');
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  // Hidden while the landing splash fills the screen; it has its own way in.
+  const [onSplash, setOnSplash] = useState(true);
 
   useEffect(() => {
-    const sections = nav
-      .map(({ id }) => document.getElementById(id))
+    const ids = new Set<string>(nav.map(({ id }) => id));
+    // The splash and hero are watched too, so the underline clears when scrolling back up.
+    const sections = ['intro', 'home', ...ids]
+      .map((id) => document.getElementById(id))
       .filter((el): el is HTMLElement => el !== null);
 
     // A section counts as active while it crosses the upper third of the viewport.
     const observer = new IntersectionObserver(
       (entries) => {
-        for (const entry of entries) if (entry.isIntersecting) setActive(entry.target.id);
+        for (const entry of entries) {
+          if (entry.isIntersecting) setActive(ids.has(entry.target.id) ? entry.target.id : '');
+        }
       },
       { rootMargin: '-30% 0px -65% 0px' }
     );
     sections.forEach((s) => observer.observe(s));
 
+    const splash = document.getElementById('intro');
     const onScroll = () => {
       setScrolled(window.scrollY > 8);
-      if (window.scrollY < 200) setActive('');
+      setOnSplash(splash ? splash.getBoundingClientRect().bottom > 80 : false);
     };
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
@@ -49,9 +56,9 @@ export function SiteNav() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-colors duration-300 ${
+      className={`fixed inset-x-0 top-0 z-50 transition-[background-color,transform] duration-300 ${
         scrolled ? 'bg-page/85 backdrop-blur-md' : 'bg-page'
-      }`}
+      } ${onSplash && !open ? '-translate-y-full' : ''}`}
     >
       <nav
         aria-label="Main"

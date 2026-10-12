@@ -6,6 +6,7 @@ import { Experience } from '@/components/sections/Experience';
 import { Hero } from '@/components/sections/Hero';
 import { Projects } from '@/components/sections/Projects';
 import { Services } from '@/components/sections/Services';
+import { Splash } from '@/components/sections/Splash';
 import { Technologies } from '@/components/sections/Technologies';
 
 // One page, sections in the reference's order. Section backgrounds alternate
@@ -13,6 +14,7 @@ import { Technologies } from '@/components/sections/Technologies';
 export default function Page() {
   return (
     <main>
+      <Splash />
       <Hero />
       <Technologies />
       <About />

@@ -5,18 +5,20 @@ export function Hero() {
   return (
     <section
       id="home"
-      className="relative flex min-h-[100svh] items-center bg-page px-6 pb-24 pt-28"
+      // Focusable so "See Portfolio" can hand keyboard focus to the hero after scrolling.
+      tabIndex={-1}
+      className="relative flex min-h-[100svh] items-center bg-page px-6 pb-24 pt-28 outline-none"
     >
       <div className="mx-auto grid w-full max-w-6xl items-center gap-12 md:grid-cols-[1.1fr_1fr]">
         <div>
-          <h1 className="font-display text-[clamp(3.5rem,9vw,6.5rem)] font-semibold leading-[0.95] tracking-[-0.02em] text-ink">
+          <h2 className="font-display text-[clamp(3.5rem,9vw,6.5rem)] font-semibold leading-[0.95] tracking-[-0.02em] text-ink">
             <span className="block animate-[rise_0.9s_cubic-bezier(0.22,1,0.36,1)_both]">
               {profile.firstName}
             </span>
             <span className="block animate-[rise_0.9s_0.08s_cubic-bezier(0.22,1,0.36,1)_both]">
               {profile.lastName}
             </span>
-          </h1>
+          </h2>
           <p className="mt-8 animate-[rise_0.9s_0.16s_cubic-bezier(0.22,1,0.36,1)_both] text-[clamp(1.6rem,3vw,2.4rem)] font-light leading-snug text-ink">
             {profile.title}
             <span className="block text-muted">{profile.stack}</span>

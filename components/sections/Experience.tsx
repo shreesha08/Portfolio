@@ -1,5 +1,20 @@
 import { experience } from '@/content/site';
 
+function Bullets({ items }: { items: string[] }) {
+  return (
+    <ul className="mt-3 space-y-1.5 text-[15px] font-light leading-[1.7] text-muted">
+      {items.map((b) => (
+        <li
+          key={b}
+          className="relative pl-4 before:absolute before:left-0 before:top-[0.7em] before:h-1 before:w-1 before:rounded-full before:bg-faint"
+        >
+          {b}
+        </li>
+      ))}
+    </ul>
+  );
+}
+
 // Vertical timeline: a centre spine with a dot per role, cards alternating
 // sides on wide screens and stacked to the right of the spine on narrow ones.
 export function Experience() {
@@ -40,16 +55,15 @@ export function Experience() {
                   <p className="mt-5 text-[15px] font-light leading-[1.75] text-muted">
                     {r.summary}
                   </p>
-                  <ul className="mt-3 space-y-1.5 text-[15px] font-light leading-[1.7] text-muted">
-                    {r.bullets.map((b) => (
-                      <li
-                        key={b}
-                        className="relative pl-4 before:absolute before:left-0 before:top-[0.7em] before:h-1 before:w-1 before:rounded-full before:bg-faint"
-                      >
-                        {b}
-                      </li>
-                    ))}
-                  </ul>
+                  {r.bullets.length > 0 && <Bullets items={r.bullets} />}
+                  {r.projects?.map((p) => (
+                    <div key={p.name} className="mt-6 border-l-2 border-pill pl-4">
+                      <h4 className="text-[16px] text-ink">
+                        {p.name} <span className="text-faint">— {p.kind}</span>
+                      </h4>
+                      <Bullets items={p.bullets} />
+                    </div>
+                  ))}
                   <ul className="mt-6 flex flex-wrap gap-2">
                     {r.tech.map((t) => (
                       <li key={t} className="pill">

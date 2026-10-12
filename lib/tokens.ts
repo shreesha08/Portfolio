@@ -20,6 +20,7 @@ const config: { theme?: any } = {
         // CSS variables are set by next/font in app/layout.tsx.
         sans: ['var(--font-poppins)', 'sans-serif'],
         display: ['var(--font-montserrat)', 'sans-serif'],
+        script: ['var(--font-script)', 'cursive'],
       },
     },
   },

@@ -32,9 +32,9 @@ export const profile = {
 export const SPLINE_SCENE = '';
 
 export const links = {
-  email: '',
-  linkedin: '',
-  github: '',
+  email: 'shreeshatech08@gmail.com',
+  linkedin: 'https://www.linkedin.com/in/shreesha08/',
+  github: 'https://github.com/shreesha08',
   // Drop the file at public/resume.pdf, then set this to '/resume.pdf'.
   resume: '',
 };
@@ -55,7 +55,7 @@ export const about = {
     'I believe good software engineering goes beyond writing code — it means understanding the problem, making thoughtful technical decisions, testing thoroughly and building solutions that can evolve with the product.',
   ],
   stats: [
-    { value: '4+', label: 'Years' },
+    { value: '5+', label: 'Years' },
     { value: 'iOS + Android', label: 'Platforms' },
     { value: '12+', label: 'Technologies' },
     { value: 'Always', label: 'Learning' },
@@ -69,36 +69,53 @@ export type Role = {
   dates: string;
   summary: string;
   bullets: string[];
+  // Projects delivered within one role, each with its own bullets.
+  projects?: { name: string; kind: string; bullets: string[] }[];
   tech: string[];
 };
 
 export const experience: Role[] = [
-  {
-    title: 'iOS Application Developer',
-    company: 'Crampad Enterprise',
-    type: 'Native iOS',
-    dates: 'Dec 2025 – Present',
-    summary: 'Owning end-to-end iOS application development using Swift and SwiftUI.',
-    bullets: [
-      'Developing reusable application components and a structured architecture.',
-      'Shared core functionality: theme configuration, text constants and error handling.',
-      'Coordinator-based navigation and test-driven development practices.',
-      'ML Kit translation workflows with downloadable language models for multilingual experiences.',
-    ],
-    tech: ['Swift', 'SwiftUI', 'Swift Package Manager', 'XCTest', 'ML Kit'],
-  },
   {
     title: 'Mobile Engineer',
     company: 'KriyaXLabs',
     type: 'Freelance',
     dates: 'Nov 2025 – Present',
     summary:
-      'Built an offline conversational chatbot in Flutter using Google Gemma 3N and MediaPipe — AI conversations with no backend inference server.',
-    bullets: [
-      'Local model integration, model selection and inference workflows.',
-      'Streaming AI responses and structured outputs for summaries, diagrams and mathematical content.',
+      'Building native iOS and cross-platform mobile applications, from app architecture to on-device AI.',
+    bullets: [],
+    projects: [
+      {
+        name: 'Crampad Enterprise',
+        kind: 'Native iOS',
+        bullets: [
+          'Owning end-to-end iOS application development using Swift and SwiftUI.',
+          'Reusable application components and a structured architecture.',
+          'Shared core functionality: theme configuration, text constants and error handling.',
+          'Coordinator-based navigation and test-driven development practices.',
+          'ML Kit translation workflows with downloadable language models for multilingual experiences.',
+        ],
+      },
+      {
+        name: 'Offline AI Chatbot',
+        kind: 'Flutter',
+        bullets: [
+          'Offline conversational chatbot using Google Gemma 3N and MediaPipe — no backend inference server.',
+          'Local model integration, model selection and inference workflows.',
+          'Streaming AI responses and structured outputs for summaries, diagrams and mathematical content.',
+        ],
+      },
     ],
-    tech: ['Flutter', 'Dart', 'Gemma 3N', 'MediaPipe', 'On-device AI'],
+    tech: [
+      'Swift',
+      'SwiftUI',
+      'Swift Package Manager',
+      'XCTest',
+      'ML Kit',
+      'Flutter',
+      'Dart',
+      'Gemma 3N',
+      'MediaPipe',
+    ],
   },
   {
     title: 'Engineer — Software Development',
@@ -219,6 +236,12 @@ export const education = {
 };
 
 export const contact = {
-  heading: "Let's build something",
-  body: "Have a mobile application idea, an interesting engineering challenge, or an opportunity to collaborate? I'm always happy to connect with people building useful products. Reach out to talk mobile development, iOS engineering, Flutter or on-device AI.",
+  heading: "Let's Connect",
+  body: 'Have a mobile app idea, an engineering challenge or an opportunity to collaborate? Get in touch!',
+  // Shown as "Status:" beside the form. Leave empty to hide; only state what's true.
+  status: '',
+  // Free key from https://web3forms.com (enter your email, the key is mailed to you).
+  // With a key, the form sends straight to your inbox. Without one, Send Message
+  // opens the visitor's mail app addressed to links.email.
+  web3formsKey: '',
 };

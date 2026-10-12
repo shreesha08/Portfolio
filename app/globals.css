@@ -39,6 +39,47 @@ body {
     transform: none;
   }
 }
+/* Splash content eases up and out as the splash leaves the viewport, tied to
+   scroll position so it tracks the See Portfolio glide and manual scrolling alike. */
+@supports (animation-timeline: view()) {
+  /* Timeline is the whole splash section, so the fade spans its full exit. */
+  #intro {
+    view-timeline: --splash block;
+  }
+  .splash-exit {
+    animation: splash-exit linear both;
+    animation-timeline: --splash;
+    animation-range: exit 0% exit 70%;
+  }
+  /* Reduce Motion: keep the fade, drop the drift, shrink and blur. */
+  @media (prefers-reduced-motion: reduce) {
+    .splash-exit {
+      animation-name: splash-exit-fade;
+    }
+  }
+}
+@keyframes splash-exit {
+  to {
+    opacity: 0;
+    transform: translateY(-18vh) scale(0.94);
+    filter: blur(2px);
+  }
+}
+@keyframes splash-exit-fade {
+  to {
+    opacity: 0;
+  }
+}
+
+/* Splash signature: reveal left-to-right like a pen stroke. */
+@keyframes write {
+  from {
+    clip-path: inset(-20% 100% -20% 0);
+  }
+  to {
+    clip-path: inset(-20% -5% -20% 0);
+  }
+}
 @keyframes fade {
   from {
     opacity: 0;
